@@ -1,6 +1,10 @@
 package com.olive.springdi;
 
+import com.olive.springdi.Controllers.ConstructorInjectedController;
 import com.olive.springdi.Controllers.MyController;
+import com.olive.springdi.Controllers.PropertyInjectedController;
+import com.olive.springdi.Controllers.SetterInjectedController;
+import com.olive.springdi.services.PrimaryGreetingServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,11 +16,21 @@ public class SpringDiApplication {
 		ApplicationContext context = SpringApplication.run(SpringDiApplication.class, args);
 
 		MyController myController =(MyController) context.getBean("myController");
+		;
+		System.out.println("------ Primary");
+		System.out.println(myController.sayHello());
 
-		String greet =myController.sayHello();
+		System.out.println("------ Property");
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) context.getBean("propertyInjectedController");
+		System.out.println(propertyInjectedController.getGreeting());
 
-		System.out.println(greet);
+		System.out.println("--------- Setter");
+		SetterInjectedController setterInjectedController = (SetterInjectedController) context.getBean("setterInjectedController");
+		System.out.println(setterInjectedController.getGreeting());
 
+		System.out.println("-------- Constructor" );
+		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) context.getBean("constructorInjectedController");
+		System.out.println(constructorInjectedController.getGreeting());
 	}
 
 }
