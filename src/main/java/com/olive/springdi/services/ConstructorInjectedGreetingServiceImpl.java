@@ -2,7 +2,7 @@ package com.olive.springdi.services;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class ConstructorInjectedGreetingServiceImpl implements GreetingService {
 
     @Override

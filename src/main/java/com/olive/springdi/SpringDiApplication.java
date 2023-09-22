@@ -4,6 +4,7 @@ import com.olive.springdi.Controllers.ConstructorInjectedController;
 import com.olive.springdi.Controllers.MyController;
 import com.olive.springdi.Controllers.PropertyInjectedController;
 import com.olive.springdi.Controllers.SetterInjectedController;
+import com.olive.springdi.Controllers.I18nController;
 import com.olive.springdi.services.PrimaryGreetingServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +16,12 @@ public class SpringDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(SpringDiApplication.class, args);
 
+		System.out.println("------Language Skill");
+		I18nController i18nController = (I18nController) context.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
 		MyController myController =(MyController) context.getBean("myController");
-		;
+
 		System.out.println("------ Primary");
 		System.out.println(myController.sayHello());
 
