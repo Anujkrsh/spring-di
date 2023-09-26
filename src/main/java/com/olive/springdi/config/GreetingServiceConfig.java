@@ -1,6 +1,7 @@
 package com.olive.springdi.config;
 
 
+import com.olive.pets.PetServiceFactory;
 import com.olive.springdi.repositories.EnglishGreetingRepository;
 import com.olive.springdi.repositories.EnglishGreetingRepositoryImpl;
 import com.olive.springdi.services.*;
@@ -11,6 +12,11 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
 
     @Bean
     EnglishGreetingRepository englishGreetingRepository(){

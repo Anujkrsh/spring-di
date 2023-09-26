@@ -6,6 +6,8 @@ import com.olive.springdi.Controllers.PropertyInjectedController;
 import com.olive.springdi.Controllers.SetterInjectedController;
 import com.olive.springdi.Controllers.I18nController;
 import com.olive.springdi.services.PrimaryGreetingServiceImpl;
+import com.olive.springdi.services.PrototypeBean;
+import com.olive.springdi.services.SingeltonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -36,6 +38,18 @@ public class SpringDiApplication {
 		System.out.println("-------- Constructor" );
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) context.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+
+		SingeltonBean singeltonBean1 = context.getBean(SingeltonBean.class);
+		System.out.println(singeltonBean1.getMyScope());
+		SingeltonBean singeltonBean2 = context.getBean(SingeltonBean.class);
+		System.out.println(singeltonBean2.getMyScope());
+
+		PrototypeBean prototypeBean = context.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean.getMyScope());
+		PrototypeBean prototypeBean1 = context.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean1.getMyScope());
+
 	}
 
 }
